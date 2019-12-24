@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AboutEvent"
+    android:background="@drawable/back"
+    android:alpha="0.83"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="About Event"
+            android:textSize="36sp"
+            android:textStyle="bold|italic"
+            android:layout_gravity="center"
+            android:layout_marginBottom="10dp"
+            android:textColor="#660000"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Indians have deep love and devoition for their regional identites in terms of tradition  and clutute. While every region that has its unique presence, Malwa stands tall as a region that has promoted , nutrured its culture and tradition. ONce ruled by the Holkars, Malwa region has always given special attention to its artists irrespective of their art form. Malwa sregion has the unique benefit of its proximity with Maharshtra  , Gujrat and Rajasthan giving it a rich heritage and cultural lineage. THis region has produced great poets like 'Kalidas , mathamaticans like Bharathari , astronomers like vrahmihir and bramhgupta and many more. Polymath King Bhoj also ruled this region day artistists like Lata Mangeshkar hails from malwa."
+            android:layout_marginBottom="10dp"
+            android:textSize="16sp"
+            android:textColor="#0E065D"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="POERTY - ART - MUSIC"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:textColor="#660000"></TextView>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

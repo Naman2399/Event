@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".VerifyMob"
+    android:background="@drawable/back"
+    android:alpha="0.83"
+    android:gravity="center"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Verify OTP"
+            android:textSize="38sp"
+            android:textStyle="bold|italic"
+            android:layout_marginBottom="10dp"
+            android:textColor="#660000"
+            android:paddingEnd="3dp"
+            android:layout_marginRight="5dp"></TextView>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:layout_marginEnd="6dp"
+            android:text="OTP"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:layout_marginBottom="10dp"
+            android:textColor="#660000"
+            ></TextView>
+
+        <EditText
+            android:id="@+id/otp_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="12dp"
+            android:layout_marginEnd="6dp"
+            android:layout_marginBottom="10dp"
+            android:hint="Enter OTP Here "
+            android:inputType="textPassword"
+            android:textAppearance="?textAppearanceLargePopupMenu"
+            android:textColor="#339933"
+            android:textColorHint="#ff6600"
+            android:textStyle="bold"></EditText>
+
+        <Button
+            android:id="@+id/submi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/btndesign"
+            android:text="Submit"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"></Button>
+
+        <Button
+            android:id="@+id/resend_otp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/btndesign"
+            android:text="Resend OTP"
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"></Button>
+
+        <Button
+            android:id="@+id/change_mobile"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="@drawable/btndesign"
+            android:text="Change Mobile No."
+            android:textColor="#FFFFFF"
+            android:textStyle="bold"></Button>
+
+    </LinearLayout>
+
+</RelativeLayout>
+
+

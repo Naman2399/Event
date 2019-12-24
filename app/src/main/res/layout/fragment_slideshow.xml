@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    android:alpha="0.83"
+    android:fillViewport="true"
+    android:paddingTop="10dp"
+    android:paddingLeft="10dp"
+    android:paddingRight="10dp"
+    >
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
+    <TextView
+
+        android:layout_width="match_parent"
+        android:textColor="#660000"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="About Event"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:text="Indians have deep love and devoition for their regional identites in terms of tradition  and clutute. While every region that has its unique presence, Malwa stands tall as a region that has promoted , nutrured its culture and tradition. ONce ruled by the Holkars, Malwa region has always given special attention to its artists irrespective of their art form. Malwa sregion has the unique benefit of its proximity with Maharshtra  , Gujrat and Rajasthan giving it a rich heritage and cultural lineage. THis region has produced great poets like 'Kalidas , mathamaticans like Bharathari , astronomers like vrahmihir and bramhgupta and many more. Polymath King Bhoj also ruled this region day artistists like Lata Mangeshkar hails from malwa."
+        android:textAlignment="center"
+        android:textColor="#000099"
+        android:textSize="20sp"
+        android:textStyle="italic"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+
+        android:text= "POERTY - ART - MUSIC"
+        android:textColor="#660000"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:textAlignment="center"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:paddingBottom="20dp"/>
+
+    </LinearLayout>
+
+</ScrollView>
