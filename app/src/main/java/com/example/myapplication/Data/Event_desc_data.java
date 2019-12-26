@@ -3,6 +3,8 @@ package com.example.myapplication.Data;
 public class Event_desc_data {
     private String event_name , date , desc , time ;
 
+    public Event_desc_data(){}
+
     public Event_desc_data(String event_name, String date, String desc, String time) {
         this.event_name = event_name;
         this.date = date;
