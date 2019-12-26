@@ -25,6 +25,8 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Objects;
+
 public class GalleryFragment extends Fragment {
 
     // Firebase
@@ -34,7 +36,6 @@ public class GalleryFragment extends Fragment {
     private RecyclerView recyclerView ;
     private Query query ;
     private String post_key , date , desc , time ;
-    private FirebaseRecyclerAdapter<Event_desc_data , MyViewHolder> adapter;
     private FirebaseRecyclerOptions options;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
@@ -47,12 +48,16 @@ public class GalleryFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
+
         // Firebase
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("event_1");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("event");
+        Log.d("Data" , Objects.requireNonNull(mDatabase.getKey()));
         //Querry
-        query = FirebaseDatabase.getInstance().getReference().child("event_1");
+        query = FirebaseDatabase.getInstance().getReference().child("event");
+
+
 
         return root;
     }
@@ -61,22 +66,23 @@ public class GalleryFragment extends Fragment {
     public void onStart(){
         super.onStart();
 
+
         options = new FirebaseRecyclerOptions.Builder<Event_desc_data>()
                 .setQuery(query , Event_desc_data.class)
                 .build();
-        adapter= new FirebaseRecyclerAdapter<Event_desc_data, MyViewHolder>(options) {
+        FirebaseRecyclerAdapter<Event_desc_data, MyViewHolder> adapter = new FirebaseRecyclerAdapter<Event_desc_data, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, int i, @NonNull Event_desc_data event_desc_data) {
                 System.out.println("dslakfjsdlfjsdlkfjs");
-                String userIDS = mDatabase.getKey() ;
-                Log.d("DataSnap" , userIDS);
+                String userIDS = mDatabase.getKey();
+                Log.d("DataSnap", userIDS);
                 mDatabase.addValueEventListener(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot ds : dataSnapshot.getChildren()){
-                            String date  = ds.child("date").getValue().toString();
-                            String event_name = ds.child("event_name").getValue().toString();
-                            String event_desc = ds.child("desc").getValue().toString();
+                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                            String date = Objects.requireNonNull(ds.child("date").getValue()).toString();
+                            String event_name = Objects.requireNonNull(ds.child("event_name").getValue()).toString();
+                            String event_desc = Objects.requireNonNull(ds.child("desc").getValue()).toString();
                             myViewHolder.mDate.setText(date);
                             myViewHolder.mName.setText(event_name);
                             myViewHolder.mTask.setText(event_desc);
@@ -94,7 +100,7 @@ public class GalleryFragment extends Fragment {
             @NonNull
             @Override
             public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.event_discription_block , viewGroup , false);
+                View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.event_discription_block, viewGroup, false);
                 MyViewHolder myViewHolder = new MyViewHolder(view);
                 return myViewHolder;
             }
