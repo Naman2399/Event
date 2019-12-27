@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/back"
+    tools:context=".GenerateNotification">
+    <AutoCompleteTextView
+        android:id="@+id/IdSelectEvent"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Select Event"
+        android:textColorHint="@android:color/holo_red_light"
+        android:background="@android:color/holo_orange_dark"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginTop="50dp"
+        android:textSize="30dp"
+
+        />
+
+    <TextView
+        android:layout_width="411dp"
+        android:layout_height="391dp"
+        android:layout_marginTop="76dp"
+        android:background="@android:color/background_light"
+        android:hint="message"
+        app:layout_constraintTop_toTopOf="@+id/IdSelectEvent"
+
+        tools:layout_editor_absoluteX="0dp" />
+
+    <Button
+        android:id="@+id/IdGenerateNotification"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="516dp"
+        android:background="@drawable/btndesign"
+        android:text="Generate Notification"
+        android:textColor="@android:color/holo_red_light"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/IdSelectEvent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

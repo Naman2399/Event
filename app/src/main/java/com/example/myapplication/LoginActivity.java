@@ -1,26 +1,16 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.firebase.FirebaseException;
-import com.google.firebase.FirebaseTooManyRequestsException;
-import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseAuthInvalidCredentialsException;
-import com.google.firebase.auth.FirebaseUser;
-import com.google.firebase.auth.PhoneAuthCredential;
-import com.google.firebase.auth.PhoneAuthProvider;
+import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.concurrent.TimeUnit;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -55,6 +45,10 @@ public class LoginActivity extends AppCompatActivity {
                     mob.requestFocus();
                     return;
                 }else {
+                    if(!mob_num.contains("+91")) {
+                        mob.setText("+91" + mob.getText().toString());
+                    }
+
                     Intent i = new Intent(LoginActivity.this , VerifyMob.class);
                     startActivity(i);
                 }

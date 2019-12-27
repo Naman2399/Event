@@ -1,20 +1,47 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/back"
+    android:alpha="0.83"
+    android:fillViewport="true"
     >
 
-    <TextView
-        android:id="@+id/text_share"
+    <EditText
+        android:id="@+id/Idadmin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
+        android:layout_marginTop="124dp"
+        android:hint="Name"
+        android:textSize="30dp"
+        android:background="@android:color/holo_orange_dark"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="16dp"
+        android:textColorHint="@android:color/holo_red_light"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Password"
+        android:textColorHint="@android:color/holo_red_light"
+        android:id="@+id/Idpassword"
+        app:layout_constraintTop_toTopOf="@+id/Idadmin"
+        android:layout_marginTop="70dp"
+        android:textSize="30dp"
+        android:background="@android:color/holo_orange_dark"/>
+
+    <Button
+
+        android:id="@+id/Idsubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="150dp"
+        android:text="Submit"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@+id/Idpassword"
+        android:background="@drawable/btndesign"
+        android:textColor="@android:color/holo_red_light"/>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
