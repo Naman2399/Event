@@ -1,11 +1,11 @@
 package com.example.myapplication.ui.gallery;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -38,7 +38,7 @@ public class GalleryFragment extends Fragment {
     private Query query ;
     private String post_key , date , desc , time ;
     private FirebaseRecyclerOptions options;
-    public ProgressBar progressBar;
+    private ProgressDialog dialog ;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -47,8 +47,6 @@ public class GalleryFragment extends Fragment {
 
         //Recycler View
         recyclerView = (RecyclerView)root.findViewById(R.id.recyclerid);
-        progressBar=(ProgressBar)root.findViewById(R.id.Idprogress);
-        progressBar.setVisibility(View.VISIBLE);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         recyclerView.setLayoutManager(layoutManager);
 
@@ -70,7 +68,9 @@ public class GalleryFragment extends Fragment {
     public void onStart(){
         super.onStart();
 
-
+        dialog = new ProgressDialog(getActivity());
+        dialog.setMessage("Loding ....");
+        dialog.show();
         options = new FirebaseRecyclerOptions.Builder<Event_desc_data>()
                 .setQuery(query , Event_desc_data.class)
                 .build();
@@ -96,7 +96,7 @@ public class GalleryFragment extends Fragment {
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-
+                            dialog.dismiss();
                     }
                 });
             }
@@ -111,7 +111,7 @@ public class GalleryFragment extends Fragment {
         };
         recyclerView.setAdapter(adapter);
         adapter.startListening();
-        progressBar.setVisibility(View.INVISIBLE);
+
     }
 
     public static class MyViewHolder extends RecyclerView.ViewHolder{

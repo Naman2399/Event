@@ -1,5 +1,6 @@
 package com.example.myapplication;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.android.volley.AuthFailureError;
@@ -15,6 +17,13 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -22,34 +31,60 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class GenerateNotification extends AppCompatActivity {
     final private String FCM_API = "https://fcm.googleapis.com/fcm/send";
     final private String serverKey = "key=" + "AAAAweSCcec:APA91bEs7EQvkkZhKZGjWut5Pe-xR3ydTFCgebYCicwGXvTf3399Jg9VXP_wD4vSlFyfx2PwAJ4J9O__sZ8nCFD0Rgf_6Tvqz41FJftqQURcGeVnos_odAQI5PSxtXcETAuN4FZ0kaBB";
     final private String contentType = "application/json";
     final String TAG = "NOTIFICATION TAG";
-    String NOTIFICATION_TITLE;
-    String NOTIFICATION_MESSAGE;
-    String TOPIC;
-
-    String[] languages = { "C","C++","Java","C#","PHP","JavaScript","jQuery","AJAX","JSON" };
+    private ProgressDialog dialog;
+    private FirebaseAuth mAuth ;
+    private DatabaseReference mDatabase ;
+    private String NOTIFICATION_TITLE , NOTIFICATION_MESSAGE  ,TOPIC;
+    public String  ename  , e;
+    public ArrayList<String> events;
     public AutoCompleteTextView acTextView;
     public Button generateNotification;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_generate_notification);
-
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, languages);
-        //Find TextView control
+        events = new ArrayList<>() ;
+        // Firebase
+        mAuth = FirebaseAuth.getInstance();
+        FirebaseUser mUser = mAuth.getCurrentUser();
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("event");
+        dialog = new ProgressDialog(GenerateNotification.this);
+        dialog.setMessage("Loading Events ....");
+        dialog.show();
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, events);
         acTextView = findViewById(R.id.IdSelectEvent);
         generateNotification=(Button) findViewById(R.id.IdGenerateNotification);
-        //Set the number of characters the user must type before the drop down list is shown
-        acTextView.setThreshold(1);
-        //Set the adapter
+        acTextView.setThreshold(0);
         acTextView.setAdapter(adapter);
+        mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                    ename = Objects.requireNonNull(ds.child("event_name").getValue()).toString();
+                    Log.d("ename" , ename);
+                    events.add(ename);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                dialog.dismiss();
+            }
+        });
+
+
+
+
 
         TOPIC = "/topics/news";
         FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(GenerateNotification.this, new OnSuccessListener<InstanceIdResult>() {
@@ -66,8 +101,7 @@ public class GenerateNotification extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 TOPIC = "/topics/news"; //topic must match with what the receiver subscribed to
-                NOTIFICATION_TITLE = "Notify";
-                NOTIFICATION_MESSAGE = "CHamp";
+                content();
                 JSONObject notification = new JSONObject();
                 JSONObject notifcationBody = new JSONObject();
                 try {
@@ -110,6 +144,44 @@ public class GenerateNotification extends AppCompatActivity {
             }
         };
         MySingleton.getInstance(getApplicationContext()).addToRequestQueue(jsonObjectRequest);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+    }
+
+    public void content() {
+        e = acTextView.getText().toString();
+        Log.d("e" , e);
+        if (e.length() != 0 ){
+            dialog = new ProgressDialog(this);
+            dialog.setMessage(" Generating Nofication");
+            dialog.show();
+            mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    for (DataSnapshot ds : dataSnapshot.getChildren()) {
+                        ename = Objects.requireNonNull(ds.child("event_name").getValue()).toString();
+                        if (ename.equals(e)){
+                            NOTIFICATION_TITLE = ename ;
+                            String time = ds.child("time").getValue().toString();
+                            String date = ds.child("date").getValue().toString();
+                            NOTIFICATION_MESSAGE = "Following event" + ename + "will be held on" + date + "and" + time;
+                            break;
+                        }
+                        Log.d("ename" , ename);
+                        events.add(ename);
+                    }
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    dialog.dismiss();
+                }
+            });
+        }
     }
 
 }
