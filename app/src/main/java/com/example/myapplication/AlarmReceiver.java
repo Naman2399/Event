@@ -38,19 +38,19 @@ public class AlarmReceiver extends BroadcastReceiver {
     private String date;
     @Override
     public void onReceive(final Context context, Intent intent) {
-        date = new SimpleDateFormat("dd-MM-yyyy", Locale.getDefault()).format(new Date());
+        date = new SimpleDateFormat("dd/MM/yyyy", Locale.getDefault()).format(new Date());
         // Firebase
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("event");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("events");
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    if (ds.child("date").getValue().toString().equals(date)){
+                    if (ds.child("Date").getValue().toString().equals(date)){
                         TOPIC = "/topics/news"; //topic must match with what the receiver subscribed to
-                        NOTIFICATION_TITLE = ds.child("event_name").getValue().toString();
-                        NOTIFICATION_MESSAGE = "Today event :" + NOTIFICATION_TITLE + "will be held at " + ds.child("time").getValue().toString();
+                        NOTIFICATION_TITLE = ds.child("Event_Name").getValue().toString();
+                        NOTIFICATION_MESSAGE = "Today event :" + NOTIFICATION_TITLE + "will be held at " + ds.child("Time").getValue().toString();
                         JSONObject notification = new JSONObject();
                         JSONObject notifcationBody = new JSONObject();
                         try {

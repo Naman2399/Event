@@ -39,6 +39,7 @@ public class GalleryFragment extends Fragment {
     private String post_key , date , desc , time ;
     private FirebaseRecyclerOptions options;
     private ProgressDialog dialog ;
+    private MyViewHolder myViewHolder ;
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
@@ -54,10 +55,10 @@ public class GalleryFragment extends Fragment {
         // Firebase
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("event");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("events").child("events");
         Log.d("Data" , Objects.requireNonNull(mDatabase.getKey()));
         //Querry
-        query = FirebaseDatabase.getInstance().getReference().child("event");
+        query = FirebaseDatabase.getInstance().getReference().child("events").child("events");
 
 
 
@@ -77,35 +78,35 @@ public class GalleryFragment extends Fragment {
         FirebaseRecyclerAdapter<Event_desc_data, MyViewHolder> adapter = new FirebaseRecyclerAdapter<Event_desc_data, MyViewHolder>(options) {
             @Override
             protected void onBindViewHolder(@NonNull final MyViewHolder myViewHolder, int i, @NonNull Event_desc_data event_desc_data) {
-                System.out.println("dslakfjsdlfjsdlkfjs");
-                String userIDS = mDatabase.getKey();
+                String userIDS = getRef(i).getKey();
                 Log.d("DataSnap", userIDS);
-                mDatabase.addValueEventListener(new ValueEventListener() {
+                mDatabase.child(userIDS).addValueEventListener(new ValueEventListener() {
                     @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                            String date = Objects.requireNonNull(ds.child("date").getValue()).toString();
-                            String event_name = Objects.requireNonNull(ds.child("event_name").getValue()).toString();
-                            String event_desc = Objects.requireNonNull(ds.child("desc").getValue()).toString();
-                            myViewHolder.mDate.setText(date);
-                            myViewHolder.mName.setText(event_name);
-                            myViewHolder.mTask.setText(event_desc);
-                        }
-
+                    public void onDataChange(@NonNull DataSnapshot ds) {
+                        String date = ds.child("Date").getValue().toString();
+                        String event_name = ds.child("Event_Name").getValue().toString();
+                        String event_desc = ds.child("Descr").getValue().toString();
+                        myViewHolder.mDate.setText(date);
+                        myViewHolder.mName.setText(event_name);
+                        myViewHolder.mTask.setText(event_desc);
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
-                            dialog.dismiss();
+
+                        dialog.dismiss();
+
                     }
                 });
+                dialog.dismiss();
+
             }
 
             @NonNull
             @Override
             public MyViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
                 View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.event_discription_block, viewGroup, false);
-                MyViewHolder myViewHolder = new MyViewHolder(view);
+                myViewHolder = new MyViewHolder(view);
                 return myViewHolder;
             }
         };
@@ -125,8 +126,25 @@ public class GalleryFragment extends Fragment {
             mName = mView.findViewById(R.id.event_name);
             mTask = mView.findViewById(R.id.event_desc);
         }
+        public void setDate(String date){
+            TextView mDate = mView.findViewById(R.id.date);
+            mDate.setText(date);
+        }
+        public void setEvent(String name){
+            TextView mName = mView.findViewById(R.id.event_name);
+            mName.setText(name);
+        }
+        public void setDescp(String task){
+            TextView mTask = mView.findViewById(R.id.event_desc);
+            mTask.setText(task);
+        }
 
 
 
     }
+
+
+
+
+
 }

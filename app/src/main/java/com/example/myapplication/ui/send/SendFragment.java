@@ -49,8 +49,6 @@ public class SendFragment extends Fragment {
             Objects.requireNonNull(getActivity()).finish();
         }else{
         }
-
-
         return root;
     }
 }

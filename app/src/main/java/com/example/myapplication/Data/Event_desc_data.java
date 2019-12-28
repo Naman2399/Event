@@ -1,46 +1,64 @@
 package com.example.myapplication.Data;
 
 public class Event_desc_data {
-    private String event_name , date , desc , time ;
+    private String Date , Descr , Event_Name , Key , Speakers , Time;
 
     public Event_desc_data(){}
 
-    public Event_desc_data(String event_name, String date, String desc, String time) {
-        this.event_name = event_name;
-        this.date = date;
-        this.desc = desc;
-        this.time = time;
-    }
-
-    public String getEvent_name() {
-        return event_name;
-    }
-
-    public void setEvent_name(String event_name) {
-        this.event_name = event_name;
+    public Event_desc_data(String date, String descr, String event_Name, String key, String speakers, String time) {
+        Date = date;
+        Descr = descr;
+        Event_Name = event_Name;
+        Key = key;
+        Speakers = speakers;
+        Time = time;
     }
 
     public String getDate() {
-        return date;
+        return Date;
     }
 
     public void setDate(String date) {
-        this.date = date;
+        Date = date;
     }
 
-    public String getDesc() {
-        return desc;
+    public String getDescr() {
+        return Descr;
     }
 
-    public void setDesc(String desc) {
-        this.desc = desc;
+    public void setDescr(String descr) {
+        Descr = descr;
+    }
+
+    public String getEvent_Name() {
+        return Event_Name;
+    }
+
+    public void setEvent_Name(String event_Name) {
+        Event_Name = event_Name;
+    }
+
+    public String getKey() {
+        return Key;
+    }
+
+    public void setKey(String key) {
+        Key = key;
+    }
+
+    public String getSpeakers() {
+        return Speakers;
+    }
+
+    public void setSpeakers(String speakers) {
+        Speakers = speakers;
     }
 
     public String getTime() {
-        return time;
+        return Time;
     }
 
     public void setTime(String time) {
-        this.time = time;
+        Time = time;
     }
 }

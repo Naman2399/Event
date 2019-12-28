@@ -58,7 +58,7 @@ public class GenerateNotification extends AppCompatActivity {
         // Firebase
         mAuth = FirebaseAuth.getInstance();
         FirebaseUser mUser = mAuth.getCurrentUser();
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("event");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("events").child("events");
         dialog = new ProgressDialog(GenerateNotification.this);
         dialog.setMessage("Loading Events ....");
         dialog.show();
@@ -72,7 +72,7 @@ public class GenerateNotification extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                    ename = Objects.requireNonNull(ds.child("event_name").getValue()).toString();
+                    ename = Objects.requireNonNull(ds.child("Event_Name").getValue()).toString();
                     Log.d("ename" , ename);
                     events.add(ename);
                 }
@@ -80,9 +80,10 @@ public class GenerateNotification extends AppCompatActivity {
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
-                dialog.dismiss();
             }
         });
+        dialog.dismiss();
+
 
 
 
@@ -203,11 +204,11 @@ public class GenerateNotification extends AppCompatActivity {
                 @Override
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                     for (DataSnapshot ds : dataSnapshot.getChildren()) {
-                        ename = Objects.requireNonNull(ds.child("event_name").getValue()).toString();
+                        ename = Objects.requireNonNull(ds.child("Event_Name").getValue()).toString();
                         if (ename.equals(e)){
                             NOTIFICATION_TITLE = ename ;
-                            String time = ds.child("time").getValue().toString();
-                            String date = ds.child("date").getValue().toString();
+                            String time = ds.child("Time").getValue().toString();
+                            String date = ds.child("Date").getValue().toString();
                             NOTIFICATION_MESSAGE = "Following event" + ename + "will be held on" + date + "and" + time;
                             break;
                         }
