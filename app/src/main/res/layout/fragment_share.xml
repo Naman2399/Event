@@ -1,47 +1,99 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back"
     android:alpha="0.83"
-    android:fillViewport="true"
+    android:orientation="vertical"
+    android:gravity="center"
     >
 
-    <EditText
-        android:id="@+id/Idadmin"
-        android:layout_width="match_parent"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="124dp"
-        android:hint="Name"
-        android:textSize="30dp"
-        android:background="@android:color/holo_orange_dark"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:layout_editor_absoluteX="16dp"
-        android:textColorHint="@android:color/holo_red_light"/>
-    <EditText
-        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:text="Admin Name"
+            android:textColor="#4C2704"
+            android:textSize="18sp"
+            android:textStyle="bold"></TextView>
+
+        <EditText
+            android:id="@+id/Idadmin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter admin id here"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#190260"
+            android:textSize="18sp"
+            android:background="#C2A55D"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Password"
-        android:textColorHint="@android:color/holo_red_light"
-        android:id="@+id/Idpassword"
-        app:layout_constraintTop_toTopOf="@+id/Idadmin"
-        android:layout_marginTop="70dp"
-        android:textSize="30dp"
-        android:background="@android:color/holo_orange_dark"/>
+        android:orientation="horizontal"
+        android:layout_gravity="center">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Admin PassKey"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#4C2704"
+            android:textSize="18sp"
+            android:textStyle="bold"></TextView>
+
+        <EditText
+            android:id="@+id/Idpassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Enter pass key"
+            android:background="#C2A55D"
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="5dp"
+            android:layout_marginRight="5dp"
+            android:layout_marginBottom="5dp"
+            android:textColor="#190260"
+            android:textSize="18sp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+
+
 
     <Button
-
+        android:layout_gravity="center"
         android:id="@+id/Idsubmit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:text="Submit"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/Idpassword"
+        android:text="  Submit  "
         android:background="@drawable/btndesign"
-        android:textColor="@android:color/holo_red_light"/>
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:textSize="16dp"/>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>

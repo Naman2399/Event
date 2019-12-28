@@ -1,44 +1,142 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/back"
+    android:orientation="vertical"
     tools:context=".GenerateNotification">
+
     <AutoCompleteTextView
         android:id="@+id/IdSelectEvent"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Select Event"
-        android:textColorHint="@android:color/holo_red_light"
-        android:background="@android:color/holo_orange_dark"
-        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginLeft="10dp"
         android:layout_marginTop="50dp"
-        android:textSize="30dp"
-
-        />
-
-    <TextView
-        android:layout_width="411dp"
-        android:layout_height="391dp"
-        android:layout_marginTop="76dp"
-        android:background="@android:color/background_light"
-        android:hint="message"
-        app:layout_constraintTop_toTopOf="@+id/IdSelectEvent"
-
-        tools:layout_editor_absoluteX="0dp" />
+        android:layout_marginRight="10dp"
+        android:background="#C2A55D"
+        android:hint="Search Event"
+        android:textColorHint="#4A0572"
+        android:textSize="20dp" />
 
     <Button
-        android:id="@+id/IdGenerateNotification"
+        android:id="@+id/gen_notif"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="516dp"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginBottom="20dp"
         android:background="@drawable/btndesign"
-        android:text="Generate Notification"
-        android:textColor="@android:color/holo_red_light"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/IdSelectEvent" />
+        android:text="  Generate Notification   "
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"></Button>
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1.5dp"
+        android:background="#4C2704" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="OR"
+        android:textColor="#4C2704"
+        android:textSize="25dp"
+        android:textStyle="bold"></TextView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="2dp"
+            android:text="Topic      "
+            android:textColor="#4C2704"
+            android:textSize="16sp"
+            android:textStyle="bold"></TextView>
+
+        <EditText
+            android:id="@+id/sec_topic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#C2A55D"
+
+            ></EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="2dp"
+            android:text="Date        "
+            android:textColor="#4C2704"
+            android:textSize="16sp"
+            android:textStyle="bold"></TextView>
+
+        <EditText
+            android:id="@+id/sec_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#C2A55D"
+            ></EditText>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="2dp"
+            android:text="Message"
+            android:textColor="#4C2704"
+            android:textSize="16sp"
+            android:textStyle="bold"></TextView>
+
+        <EditText
+            android:id="@+id/sec_msg"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#C2A55D"
+            ></EditText>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/gen_notif_sec"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="15dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/btndesign"
+        android:text="  Generate Notification   "
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"></Button>
+
+
+</LinearLayout>

@@ -16,6 +16,6 @@
     <string name="menu_gallery">Event Description</string>
     <string name="menu_slideshow">About Us</string>
     <string name="menu_tools">Log Out</string>
-    <string name="menu_share">Share</string>
+    <string name="menu_share">Admin</string>
     <string name="menu_send">Log Out</string>
 </resources>

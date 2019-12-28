@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -35,8 +36,23 @@ public class ShareFragment extends Fragment {
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent=new Intent(root.getContext(), GenerateNotification.class);
-                startActivity(intent);
+                EditText one = root.findViewById(R.id.Idadmin);
+                EditText two = root.findViewById(R.id.Idpassword);
+                String x = one.getText().toString();
+                String y = two.getText().toString();
+                if (x.toLowerCase().equals("james") && y.toLowerCase().equals("007")){
+                    Intent intent=new Intent(root.getContext(), GenerateNotification.class);
+                    startActivity(intent);
+                }
+                else{
+                    if (x.toLowerCase().equals("james")){
+                        two.setError("Wrong PassKey");
+                    }
+                    if(y.toLowerCase().equals("007")){
+                        one.setError("Wrong Admin ID");
+                    }
+                }
+
             }
         });
         return root;

@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -48,7 +49,7 @@ public class GenerateNotification extends AppCompatActivity {
     public String  ename  , e;
     public ArrayList<String> events;
     public AutoCompleteTextView acTextView;
-    public Button generateNotification;
+    public Button generateNotification , getGenerateNotification2;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +64,8 @@ public class GenerateNotification extends AppCompatActivity {
         dialog.show();
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,android.R.layout.select_dialog_singlechoice, events);
         acTextView = findViewById(R.id.IdSelectEvent);
-        generateNotification=(Button) findViewById(R.id.IdGenerateNotification);
+        generateNotification=(Button) findViewById(R.id.gen_notif);
+        getGenerateNotification2 = findViewById(R.id.gen_notif_sec);
         acTextView.setThreshold(0);
         acTextView.setAdapter(adapter);
         mDatabase.addListenerForSingleValueEvent(new ValueEventListener() {
@@ -114,6 +116,44 @@ public class GenerateNotification extends AppCompatActivity {
                     Log.e(TAG, "onCreate: " + e.getMessage() );
                 }
                 sendNotification(notification);
+            }
+        });
+
+        getGenerateNotification2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                EditText one = findViewById(R.id.sec_topic);
+                EditText two = findViewById(R.id.sec_date);
+                EditText three = findViewById(R.id.sec_msg);
+                String x = one.getText().toString();
+                String y = one.getText().toString();
+                String z = one.getText().toString();
+                if (x.isEmpty()){
+                    one.setError("Enter required field");
+                }
+                if (y.isEmpty()){
+                    two.setError("Enter required field");
+                }
+                if (z.isEmpty()){
+                    three.setError("Enter required field");
+                }
+                else{
+                    TOPIC = "/topics/news"; //topic must match with what the receiver subscribed to
+                    NOTIFICATION_TITLE = x ;
+                    NOTIFICATION_MESSAGE = "Event" + x + "will be held on " + y ;
+                    JSONObject notification = new JSONObject();
+                    JSONObject notifcationBody = new JSONObject();
+                    try {
+                        notifcationBody.put("title", NOTIFICATION_TITLE);
+                        notifcationBody.put("message", NOTIFICATION_MESSAGE);
+
+                        notification.put("to", TOPIC);
+                        notification.put("data", notifcationBody);
+                    } catch (JSONException e) {
+                        Log.e(TAG, "onCreate: " + e.getMessage() );
+                    }
+                    sendNotification(notification);
+                }
             }
         });
 

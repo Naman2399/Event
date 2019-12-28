@@ -1,15 +1,14 @@
 package com.example.myapplication;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -132,6 +131,7 @@ public class VerifyMob extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             Toast.makeText(VerifyMob.this, "Login Successfull", Toast.LENGTH_SHORT).show();
                             startActivity(new Intent(VerifyMob.this  ,HomeActivity.class));
+                            finish();
 
                         } else {
                             Toast.makeText(VerifyMob.this, "Login Failed", Toast.LENGTH_SHORT).show();
