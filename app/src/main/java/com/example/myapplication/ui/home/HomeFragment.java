@@ -2,6 +2,7 @@ package com.example.myapplication.ui.home;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,10 +32,10 @@ public class HomeFragment extends Fragment {
         homeViewModel =
                 ViewModelProviders.of(this).get(HomeViewModel.class);
         View root = inflater.inflate(R.layout.fragment_home, container, false);
-//        viewPager = root.findViewById(R.id.view_pager);
-//        customSwipeAdapter = new CustomSwipeAdapter(getActivity());
-//        viewPager.setAdapter(customSwipeAdapter);
-//        createSlideShow();
+        viewPager = root.findViewById(R.id.view_pager);
+        customSwipeAdapter = new CustomSwipeAdapter(getActivity());
+        viewPager.setAdapter(customSwipeAdapter);
+        createSlideShow();
         return root;
     }
 
@@ -43,7 +44,8 @@ public class HomeFragment extends Fragment {
         final Runnable runnable=new Runnable() {
             @Override
             public void run() {
-                current_position=current_position%5;
+                current_position=(current_position)%3;
+                Log.d("curr" , current_position + "");
                 viewPager.setCurrentItem(current_position++,true);
 
             }

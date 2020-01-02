@@ -4,12 +4,50 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
+    android:background="@drawable/back"
+    android:alpha="0.83"
+    android:fillViewport="true"
     >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Eminent Personalities"
+        android:textColor="#57336F"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"></TextView>
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
-        android:layout_height="match_parent"
+        android:layout_height="200dp"
         android:layout_width="match_parent"
         ></androidx.viewpager.widget.ViewPager>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Malwa Literary Society"
+        android:textColor="#57336F"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"></TextView>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="With the rich tradition of folk art forms, music, poetry and its cultural awareness
+Bansal News  is coming up with Malwa Lit Fest /Malwa Sahitya Utsav. It is a three day celebration of art, culture and literature. The ideas to bring artists from Malwa and rest of the country on a single platform andcreate a cultural dialogue for our generation.
+"
+        android:textColor="#582F0F"
+        android:textSize="16sp"
+        android:textStyle="italic"></TextView>
+
+
 
 
 

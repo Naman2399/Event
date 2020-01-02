@@ -5,16 +5,10 @@
     android:layout_gravity="center"
     >
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/image_count"
-        android:layout_gravity="center"
-        ></TextView>
-
     <ImageView
-        android:layout_width="match_parent"
+        android:layout_width="200dp"
         android:layout_height="200dp"
-        android:id="@+id/image_view"></ImageView>
+        android:id="@+id/image_view"
+        android:layout_gravity="center"></ImageView>
 
 </LinearLayout>
