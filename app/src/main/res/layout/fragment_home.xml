@@ -12,13 +12,13 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:gravity="center"
         android:text="Eminent Personalities"
         android:textColor="#57336F"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"></TextView>
+        android:textSize="20sp"
+        android:textStyle="bold"></TextView>
 
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/view_pager"
@@ -29,17 +29,19 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="15dp"
         android:gravity="center"
         android:text="Malwa Literary Society"
         android:textColor="#57336F"
-        android:textSize="18sp"
-        android:textStyle="bold"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="15dp"></TextView>
+        android:textSize="20sp"
+        android:textStyle="bold"></TextView>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
         android:text="With the rich tradition of folk art forms, music, poetry and its cultural awareness
 Bansal News  is coming up with Malwa Lit Fest /Malwa Sahitya Utsav. It is a three day celebration of art, culture and literature. The ideas to bring artists from Malwa and rest of the country on a single platform andcreate a cultural dialogue for our generation.
 "
