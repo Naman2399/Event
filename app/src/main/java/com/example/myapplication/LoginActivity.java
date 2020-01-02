@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,7 +32,6 @@ public class LoginActivity extends AppCompatActivity {
             i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
             startActivity(i);
         } else {
-            Toast.makeText(LoginActivity.this , "Automatic authenticate" , Toast.LENGTH_LONG).show();
 
         }
         submit.setOnClickListener(new View.OnClickListener() {

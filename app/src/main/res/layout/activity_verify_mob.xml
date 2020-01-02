@@ -59,7 +59,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/btndesign"
-            android:text="Submit"
+            android:text="     Submit     "
             android:textColor="#FFFFFF"
             android:textStyle="bold"></Button>
 
@@ -69,7 +69,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:background="@drawable/btndesign"
-            android:text="Resend OTP"
+            android:text="     Resend OTP     "
             android:textColor="#FFFFFF"
             android:textStyle="bold"></Button>
 

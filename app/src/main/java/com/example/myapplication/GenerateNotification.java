@@ -209,8 +209,7 @@ public class GenerateNotification extends AppCompatActivity {
                             NOTIFICATION_TITLE = ename ;
                             String time = ds.child("Time").getValue().toString();
                             String date = ds.child("Date").getValue().toString();
-                            NOTIFICATION_MESSAGE = "Following event" + ename + "will be held on" + date + "and" + time;
-                            break;
+                            NOTIFICATION_MESSAGE = "Following event " + ename + " will be held on " + date + " and " + time;
                         }
                         Log.d("ename" , ename);
                         events.add(ename);
@@ -222,6 +221,7 @@ public class GenerateNotification extends AppCompatActivity {
                     dialog.dismiss();
                 }
             });
+            dialog.dismiss();
         }
     }
 
