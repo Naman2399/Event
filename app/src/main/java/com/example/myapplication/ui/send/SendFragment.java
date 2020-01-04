@@ -41,6 +41,8 @@ public class SendFragment extends Fragment {
         mauth = FirebaseAuth.getInstance();
         FirebaseUser user = mauth.getCurrentUser();
         Log.d("User" , user.toString());
+
+        // Sign Out Method for our app
         if (user != null){
             mauth.signOut();
             Intent intent = new Intent(root.getContext(), MainActivity.class);

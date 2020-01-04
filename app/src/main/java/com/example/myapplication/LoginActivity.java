@@ -25,6 +25,7 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         mob = (EditText)findViewById(R.id.login_mob);
 
+        // User is already signed in then we can use this
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         if (user != null) {
             // User is signed in
@@ -34,6 +35,8 @@ public class LoginActivity extends AppCompatActivity {
         } else {
 
         }
+
+        // Activity initiated after clicking the submit butto
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

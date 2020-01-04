@@ -39,6 +39,7 @@ public class HomeFragment extends Fragment {
         return root;
     }
 
+    // Imagge Slider and then calling the mehtods of CustomSwipeAdapter.class file
     public void createSlideShow(){
         final Handler handler=new Handler();
         final Runnable runnable=new Runnable() {

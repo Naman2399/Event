@@ -48,6 +48,8 @@ public class VerifyMob extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         otp = (EditText)findViewById(R.id.otp_value);
         getVerificationCode();
+
+        // otp is being verified here
         submit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -64,12 +66,15 @@ public class VerifyMob extends AppCompatActivity {
             }
         });
 
+        // if we want to resend the otp
         resend_otp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 finish();
             }
         });
+
+        // change the mobile number
         change_mob.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -78,6 +83,8 @@ public class VerifyMob extends AppCompatActivity {
         });
 
     }
+
+
     public void getVerificationCode(){
         String phoneNumber = LoginActivity.mob.getText().toString();
         PhoneAuthProvider.getInstance().verifyPhoneNumber(
@@ -88,6 +95,7 @@ public class VerifyMob extends AppCompatActivity {
                 mCallbacks);        // OnVerificationStateChangedCallbacks
 
     }
+
 
     PhoneAuthProvider.OnVerificationStateChangedCallbacks mCallbacks = new PhoneAuthProvider.OnVerificationStateChangedCallbacks() {
 
